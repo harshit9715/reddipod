@@ -1,0 +1,6 @@
+{
+    "path-intellisense.mappings": {
+        "/icons": "${workspaceFolder}/public/icons",
+        "/images": "${workspaceFolder}/public/images",
+    }
+}
