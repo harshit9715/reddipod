@@ -1,8 +1,9 @@
+import AudioProvider from "@/providers/AudioProvider";
+import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { ReactNode } from "react";
 import "./globals.css";
-import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
-import AudioProvider from "@/providers/AudioProvider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <ConvexClerkProvider>

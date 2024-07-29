@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "@/convex/_generated/api";
-import { useAudio } from '@/providers/AudioProvider';
+import { useAudio } from "@/providers/AudioProvider";
 import { PodcastDetailPlayerProps } from "@/types";
 
 import LoaderSpinner from "./LoaderSpinner";
@@ -32,7 +32,11 @@ const PodcastDetailPlayer = ({
 
   const handleDelete = async () => {
     try {
-      await deletePodcast({ podcastId, imageStorageId, audioStorageId });
+      await deletePodcast({
+        podcastId,
+        imageStorageId: imageStorageId!,
+        audioStorageId: audioStorageId!,
+      });
       toast({
         title: "Podcast deleted",
       });
@@ -49,8 +53,8 @@ const PodcastDetailPlayer = ({
   const handlePlay = () => {
     setAudio({
       title: podcastTitle,
-      audioUrl,
-      imageUrl,
+      audioUrl: audioUrl!,
+      imageUrl: imageUrl!,
       author,
       podcastId,
     });

@@ -1,17 +1,17 @@
-import React, { useRef, useState } from "react";
-import { Button } from "./ui/button";
+import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
 import { GenerateThumbnailProps } from "@/types";
-import { Loader } from "lucide-react";
-import { Input } from "./ui/input";
-import Image from "next/image";
-import { useToast } from "./ui/use-toast";
 import { useUploadFiles } from "@xixixao/uploadstuff/react";
 import { useAction, useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { Loader } from "lucide-react";
+import Image from "next/image";
+import React, { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
+import { useToast } from "./ui/use-toast";
 
 const GenerateThumbnail = ({
   image,
@@ -66,8 +66,7 @@ const GenerateThumbnail = ({
         title: "Error generating thumbnail",
         variant: "destructive",
       });
-    }
-    finally {
+    } finally {
       setIsImgLoading(false);
     }
   };
@@ -141,7 +140,7 @@ const GenerateThumbnail = ({
               {isImgLoading ? (
                 <>
                   Generating
-                  <Loader size={20} className="animate-spin ml-2" />
+                  <Loader size={20} className="ml-2 animate-spin" />
                 </>
               ) : (
                 "Generate"

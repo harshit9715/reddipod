@@ -2,10 +2,9 @@
 import EmptyState from "@/components/EmptyState";
 import LoaderSpinner from "@/components/LoaderSpinner";
 import PodcastCard from "@/components/PodcastCard";
+import SearchBar from "@/components/SearchBar";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import React from "react";
-import SearchBar from "@/components/SearchBar";
 
 const Discover = ({
   searchParams: { search },

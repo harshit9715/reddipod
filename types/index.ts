@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { Id } from "@/convex/_generated/dataModel";
 
@@ -80,14 +80,14 @@ export interface LatestPodcastCardProps {
 }
 
 export interface PodcastDetailPlayerProps {
-  audioUrl: string;
+  audioUrl?: string;
   podcastTitle: string;
   author: string;
   isOwner: boolean;
-  imageUrl: string;
+  imageUrl?: string;
   podcastId: Id<"podcasts">;
-  imageStorageId: Id<"_storage">;
-  audioStorageId: Id<"_storage">;
+  imageStorageId?: Id<"_storage">;
+  audioStorageId?: Id<"_storage">;
   authorImageUrl: string;
   authorId: string;
 }

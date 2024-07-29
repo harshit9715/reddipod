@@ -1,8 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import GeneratePodcast from "@/components/GeneratePodcast";
+import GenerateThumbnail from "@/components/GenerateThumbnail";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -21,16 +19,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
-import GeneratePodcast from "@/components/GeneratePodcast";
-import GenerateThumbnail from "@/components/GenerateThumbnail";
-import { Loader } from "lucide-react";
-import { Id } from "@/convex/_generated/dataModel";
 import { useToast } from "@/components/ui/use-toast";
-import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "convex/react";
+import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2).max(120),
@@ -76,7 +76,7 @@ const CreatePodcast = () => {
         });
         throw new Error("Please generate audio and image");
       }
-      const podcast = await createPodcast({
+      await createPodcast({
         podcastTitle,
         podcastDescription,
         audioUrl,
@@ -90,7 +90,7 @@ const CreatePodcast = () => {
         views: 0,
       });
       toast({
-        title: "Podcast created successfully"
+        title: "Podcast created successfully",
       });
       // TODO: push to podcast page
       router.push(`/`);
@@ -211,7 +211,7 @@ const CreatePodcast = () => {
                 {form.formState.isValidating || form.formState.isSubmitting ? (
                   <>
                     Submitting
-                    <Loader size={20} className="animate-spin ml-2" />
+                    <Loader size={20} className="ml-2 animate-spin" />
                   </>
                 ) : (
                   "Submit & Publish Podcast"

@@ -1,14 +1,15 @@
 "use client";
+import { api } from "@/convex/_generated/api";
 import { GeneratePodcastProps } from "@/types";
-import React, { useState } from "react";
+import { useUploadFiles } from "@xixixao/uploadstuff/react";
+import "@xixixao/uploadstuff/react/styles.css";
+import { useAction, useMutation } from "convex/react";
+import { Loader } from "lucide-react";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/button";
-import { Loader } from "lucide-react";
-import { useAction, useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { v4 as uuidv4 } from "uuid";
-import { useUploadFiles } from "@xixixao/uploadstuff/react";
 import { useToast } from "./ui/use-toast";
 
 const useGeneratePodcast = ({
@@ -91,7 +92,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
           {isGenerating ? (
             <>
               Generating
-              <Loader size={20} className="animate-spin ml-2" />
+              <Loader size={20} className="ml-2 animate-spin" />
             </>
           ) : (
             "Generate"

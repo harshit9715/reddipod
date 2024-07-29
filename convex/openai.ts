@@ -1,7 +1,7 @@
-import { action } from "./_generated/server";
 import { v } from "convex/values";
 import OpenAI from "openai";
 import { SpeechCreateParams } from "openai/resources/audio/speech.mjs";
+import { action } from "./_generated/server";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -10,7 +10,6 @@ const openai = new OpenAI({
 export const generateAudioAction = action({
   args: { input: v.string(), voiceType: v.string() },
   handler: async (_, { input, voiceType }) => {
-    
     // const textResponse = await openai.completions.create({
     //   model: "davinci-002",
     //   prompt: "Generate an interesting podcast transcript for the topic using the following prompt: " + input,
@@ -23,7 +22,7 @@ export const generateAudioAction = action({
     const mp3 = await openai.audio.speech.create({
       model: "tts-1",
       voice: voiceType as SpeechCreateParams["voice"],
-      input: input //textResponse.choices[0].text,
+      input, // textResponse.choices[0].text,
     });
     return await mp3.arrayBuffer();
   },

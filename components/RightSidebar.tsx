@@ -1,15 +1,14 @@
 "use client";
-import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 import Carousel from "@/components/Carousel";
 import Header from "@/components/Header";
-import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import LoaderSpinner from "./LoaderSpinner";
-import { useAudio } from "@/providers/AudioProvider";
 import { cn } from "@/lib/utils";
+import { useAudio } from "@/providers/AudioProvider";
+import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
+import { useQuery } from "convex/react";
+import Image from "next/image";
+import Link from "next/link";
+import LoaderSpinner from "./LoaderSpinner";
 
 const RightSidebar = () => {
   const { user } = useUser();
@@ -17,9 +16,11 @@ const RightSidebar = () => {
   const { audio } = useAudio();
 
   return (
-    <section className={cn("right_sidebar h-[calc(100vh-5px)]", {
-      'h-[calc(100vh-140px)]': audio?.audioUrl
-    })}>
+    <section
+      className={cn("right_sidebar h-[calc(100vh-5px)]", {
+        "h-[calc(100vh-140px)]": audio?.audioUrl,
+      })}
+    >
       <SignedIn>
         <Link href={`/profile/${user?.id}`} className="flex gap-3 pb-12">
           <UserButton />
@@ -51,23 +52,27 @@ const RightSidebar = () => {
                 className="flex cursor-pointer justify-between"
               >
                 <figure className="flex items-center gap-2">
-                <Image
-                  src={podcaster.imageUrl}
-                  width={30}
-                  height={30}
-                  alt={podcaster.name}
-                  className="aspect-square rounded-lg"
-                />
-                <h2 className="text-14 font-semibold text-white-1">
-                  {podcaster.name}
-                </h2>
+                  <Image
+                    src={podcaster.imageUrl}
+                    width={30}
+                    height={30}
+                    alt={podcaster.name}
+                    className="aspect-square rounded-lg"
+                  />
+                  <h2 className="text-14 font-semibold text-white-1">
+                    {podcaster.name}
+                  </h2>
                 </figure>
                 <div className="flex items-center">
-                  <p className="text-12 font-normal">{podcaster.totalPodcasts} podcasts</p>
+                  <p className="text-12 font-normal">
+                    {podcaster.totalPodcasts} podcasts
+                  </p>
                 </div>
               </Link>
-            ))): <LoaderSpinner />
-          }
+            ))
+          ) : (
+            <LoaderSpinner />
+          )}
         </div>
       </section>
     </section>

@@ -1,20 +1,18 @@
 "use client";
-import React from "react";
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { sidebarLinks } from "@/constants";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { sidebarLinks } from "@/constants";
-import { usePathname, useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const router = useRouter();
   return (
     <section>
       <Sheet>
@@ -34,7 +32,7 @@ const MobileNav = () => {
           >
             <Image src="/icons/logo.svg" alt="logo" width={23} height={27} />
             <h1 className="text-24 ml-2 font-extrabold text-white-1">
-            Reddipod
+              Reddipod
             </h1>
           </Link>
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
