@@ -27,7 +27,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(
     emblaApi,
-    onNavButtonClick
+    onNavButtonClick,
   );
 
   const slides =

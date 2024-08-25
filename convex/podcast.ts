@@ -76,8 +76,8 @@ export const getPodcastByVoiceType = query({
       .filter((q) =>
         q.and(
           q.eq(q.field("voiceType"), podcast?.voiceType),
-          q.neq(q.field("_id"), args.podcastId)
-        )
+          q.neq(q.field("_id"), args.podcastId),
+        ),
       )
       .collect();
   },
@@ -122,7 +122,7 @@ export const getPodcastByAuthorId = query({
 
     const totalListeners = podcasts.reduce(
       (sum, podcast) => sum + podcast.views,
-      0
+      0,
     );
 
     return { podcasts, listeners: totalListeners };
@@ -151,7 +151,7 @@ export const getPodcastBySearch = query({
     const titleSearch = await ctx.db
       .query("podcasts")
       .withSearchIndex("search_title", (q) =>
-        q.search("podcastTitle", args.search)
+        q.search("podcastTitle", args.search),
       )
       .take(10);
 
@@ -162,7 +162,7 @@ export const getPodcastBySearch = query({
     return await ctx.db
       .query("podcasts")
       .withSearchIndex("search_body", (q) =>
-        q.search("podcastDescription" || "podcastTitle", args.search)
+        q.search("podcastDescription" || "podcastTitle", args.search),
       )
       .take(10);
   },

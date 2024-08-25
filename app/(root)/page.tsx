@@ -18,7 +18,7 @@ const Home = () => {
               description={podcastDescription}
               podcastId={_id as any}
             />
-          )
+          ),
         )}
       </div>
     </div>

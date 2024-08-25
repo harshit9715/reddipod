@@ -43,10 +43,10 @@ const CreatePodcast = () => {
   const [imagePrompt, setImagePrompt] = React.useState<string>("");
   const [audioUrl, setAudioUrl] = useState("");
   const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(
-    null
+    null,
   );
   const [imageStorageId, setimageStorageId] = useState<Id<"_storage"> | null>(
-    null
+    null,
   );
   const [imageUrl, setImageUrl] = useState("");
   const [audioDuration, setAudioDuration] = useState(0);
@@ -138,7 +138,7 @@ const CreatePodcast = () => {
               <Select onValueChange={(value) => setVoiceType(value)}>
                 <SelectTrigger
                   className={cn(
-                    "text-16 w-full border-none bg-black-1 text-gray-1"
+                    "text-16 w-full border-none bg-black-1 text-gray-1",
                   )}
                 >
                   <SelectValue

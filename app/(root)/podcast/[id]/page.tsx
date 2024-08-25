@@ -71,7 +71,7 @@ const PodcastDetails = ({ params }: { params: { id: Id<"podcasts"> } }) => {
                   description={podcastDescription}
                   podcastId={_id as any}
                 />
-              )
+              ),
             )}
           </div>
         ) : (

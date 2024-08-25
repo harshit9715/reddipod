@@ -41,7 +41,7 @@ export const getTopUserByPodcastCount = query({
             podcastId: p._id,
           })),
         };
-      })
+      }),
     );
 
     return userData.sort((a, b) => b.totalPodcasts - a.totalPodcasts);
@@ -96,7 +96,7 @@ export const updateUser = internalMutation({
         await ctx.db.patch(p._id, {
           authorImageUrl: args.imageUrl,
         });
-      })
+      }),
     );
   },
 });
